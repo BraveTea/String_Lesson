@@ -1,0 +1,198 @@
+def prnt_inter(x):
+	print("")
+	x_str = ""
+	for i in range(5):
+		x_str = x_str + x
+	print(x_str.center(30, " "))
+	print("")
+	
+prnt_inter("1")
+
+# string practice
+
+x = "spam"
+
+
+# is it zero-indexed?
+
+print(x[0])
+
+# yup! This means that the counting of the string starts at 0 (instead of 1). You just printed the zeroeth letter of x (spam) which is 's' so it starts counting at zero
+
+#len() gives you the length 
+
+print(len(x))
+
+#len() starts counting at 1 
+
+
+# iterate through the string and print all chars seperately
+i=0
+while i < len(x):
+	print(x[i])
+	i=i+1
+	
+#and now for something completely different
+
+i=0
+newStr = ""
+
+while i < len(x):
+	newStr = newStr + x[i]
+	i=i+1
+
+print(newStr)
+
+# well that was useless, but good practise! this just pulled a string apart and then printed it back to a string
+
+prnt_inter("2")
+
+#below I start thinking about concactenating and printing type-mixed variables
+
+someThing = "blahblah"
+num1 = 1
+num2 = 4
+
+print(num1, someThing, num2)
+
+#concactenate
+
+someStr1 = "spam"
+someStr2 = "eggs"
+someStr3 = "bacon"
+
+print(someStr1 * 8)
+
+#make sure you read that output like the spam song 
+
+print(someStr3 + "and" + someStr2)
+
+#note that spaces are something you have to take into account when writing code.
+#see below for several examples
+
+
+space = " "
+space1 = "Monty "
+space2 = " Python"
+
+print(space1 + "Python")
+print("Monty" + space2)
+print("Monty" + space + "Python")
+print("Monty" + " " + "Python")
+
+
+prnt_inter("3")
+
+#let's take a look at string formatting 
+
+someList = ["blah", "yackerdy", "schmackerdy"] #this is where you let Python know what words, or  numbers (variables) you want to use. You put these in a list like someList
+someStrFormat = "Taz's father says: {0}{0}{0}, {1} {2}".format(someList[0], someList[1], someList[2]) #the first bit is where you write what you want to be output. The numbers in { } correspond with the order of the .format at the end the line (try changing the [1] and [2])
+print(someStrFormat)
+
+#you can also use named arguments
+
+x = 12
+y = 7
+z = 19
+
+sum = "{0} + {1} = {2}".format(x, y, z)
+print(sum)
+
+#you can also simply put the numbers/words you want formatted in the .format() 
+#remember, this is still about the order of where you put them in the .format()
+
+sum2 = "{0} + {1} = {2}".format(20, 22 ,42 )
+print(sum2)
+
+#it is not always about the order as you can see below (when you use assignments in format)
+#if you want you can also assign the arguments in the .format()
+
+sum3 = "{a} + {c} = {b}".format(a = 50, b = 73, c = 23)
+print(sum3)
+
+#you can mix and match ints and strs to your hearts desire, because all are converted to string
+#also you can substitute everything like this.
+
+sum4 = "{a}{s}{p}{s}{b}{s}{i}{s}{c}".format(a=1, b=2, c=3, s = " ", p = "+", i = "=")
+print(sum4)
+
+
+#the join() function is used on strings
+#is it to join a list (of strings) together, either with or without another string as a separator
+
+thisStrLst = ["one", "two", "three"]
+print(", ".join(thisStrLst))
+
+#the fact that the list has the same spacing as the output is because of the part before the .join() (the ", ") and not because of the list. 
+#you can see an example below of a different separator; " + "
+
+thisStrLst = ["one", "two", "three"]
+print(" + ".join(thisStrLst))
+
+#you can also use a variable here for the first part of the join() 
+#of course you need to define the variable first and this needs to be a string!
+
+thisStrLst = ["one", "two", "three"]
+cmaSpcStr = ", "
+print(cmaSpcStr.join(thisStrLst))
+
+#if you print lists it will look like
+
+fibStrLst = ["1","1","2","3","5","8"]
+print("a printed list looks like: " + str(fibStrLst))
+
+#so what if you want to use that list as one line of all numbers together? Use join as below
+#the separator is simply a string with no space or letter/number in it; ""
+
+print("".join(fibStrLst))
+
+#you can even use join() on a string (a string is a series of strings). this, counterintuitively doesn't join letters/words/etc, but takes a string apart and puts them in a order with a separator between the letters.
+
+print(", ".join("spam"))
+
+
+#print functions with strings
+
+#there are several handy function built into Python that are used on strings
+
+#title() gives every part of a string a capital
+name = "eric idle"
+print(name.title())
+
+#upper() changes the case of every letter in the string to upper case
+print(name.upper())
+
+
+#remember that nothing is changed in the string. all these functions return a different-looking string only while using the function. the string itself is immutable(you can't change it)
+
+print(name)
+
+#of course when we put it into a new variable it gives us the same/new output every time and we can use different functions on that new string of course.
+
+name_uc = name.upper()
+print(name_uc)
+ 
+#the lower() function works pretty much as you'd expect
+
+print(name_uc.lower())
+
+#print(name.center(30," "))
+
+#print(name.maketrans())
+
+#replace() replaces any specified character or string with some other char or str
+
+print(name.replace("e","3"))
+print(name.replace("eric", "monty"))
+
+#the chars or str needs to be exactly right. in the func below it will not replce anything because there is no Eric
+print(name.replace("Eric", "Monty"))
+
+#if we create a variable that does have a "Eric" in it, the replace will work
+
+norm_name = name.title()
+print(norm_name.replace("Eric", "Monty"))
+
+
+#swapcase() this does as you expect :)
+print(norm_name.swapcase())
